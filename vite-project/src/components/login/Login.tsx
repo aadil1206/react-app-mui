@@ -32,7 +32,7 @@ const Login = () => {
   const navigate = useNavigate();
   const onSubmit = (data: Inputs) => {
     setItem(data);
-    navigate("/Dashlayout");
+    navigate("/Page");
   };
 
   return (
