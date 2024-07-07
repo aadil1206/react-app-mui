@@ -76,7 +76,6 @@ const Login = () => {
                 label="Email"
                 helperText={errors.email?.message}
                 error={!!errors.email?.message}
-                type="password"
                 fullWidth
                 required
               />
