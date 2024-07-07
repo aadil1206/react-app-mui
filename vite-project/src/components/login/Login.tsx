@@ -8,14 +8,17 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 interface Inputs {
+  Name: string;
+  Number: string;
   email: string;
-  firstName: string;
-  password: string;
 }
 const schema = yup.object().shape({
   email: yup.string().required().email(),
-  firstName: yup.string().required().min(2).max(25),
-  password: yup.string().required().min(8).max(120),
+  Number: yup
+    .string()
+    .required()
+    .matches(/^\d{1,10}$/, "Number must be between 1 and 10 digits"),
+  Name: yup.string().required(),
 });
 const Login = () => {
   const {
@@ -41,12 +44,12 @@ const Login = () => {
               <label htmlFor="name">Your Name</label>
 
               <TextField
-                {...register("email")}
+                {...register("Name")}
                 variant="outlined"
                 margin="normal"
-                label="Email"
-                helperText={errors.email?.message}
-                error={!!errors.email?.message}
+                label="Name"
+                helperText={errors.Name?.message}
+                error={!!errors.Name?.message}
                 fullWidth
                 required
               />
@@ -54,12 +57,12 @@ const Login = () => {
             <div className="col-12 mt-3 flex-column d-flex c100">
               <label htmlFor="mobileNumber">Mobile Number</label>
               <TextField
-                {...register("firstName")}
+                {...register("Number")}
                 variant="outlined"
                 margin="normal"
-                label="First Name"
-                helperText={errors.firstName?.message}
-                error={!!errors.firstName?.message}
+                label="Number"
+                helperText={errors.Number?.message}
+                error={!!errors.Number?.message}
                 fullWidth
                 required
               />
@@ -67,12 +70,12 @@ const Login = () => {
             <div className="col-12 mt-3 flex-column d-flex c100">
               <label htmlFor="email">Email Address</label>
               <TextField
-                {...register("password")}
+                {...register("email")}
                 variant="outlined"
                 margin="normal"
-                label="Password"
-                helperText={errors.password?.message}
-                error={!!errors.password?.message}
+                label="Email"
+                helperText={errors.email?.message}
+                error={!!errors.email?.message}
                 type="password"
                 fullWidth
                 required
