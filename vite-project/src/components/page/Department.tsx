@@ -82,9 +82,9 @@ function Department() {
     );
   };
 
-  const handleChildChange = async (subID: number, Item: number) => {
+  const handleChildChange = async (subID: number) => {
     await SetDepartmentsdata(
-      DepartmentsData.map((item: Department, ind: number) => {
+      DepartmentsData.map((item: Department,) => {
         let UpdSub = item.sub_departments.map((subitem: subDepartment) => {
           if (subitem.id === subID) {
             return {
@@ -143,7 +143,7 @@ function Department() {
           </div>
 
           {open[index].state &&
-            item.sub_departments.map((sub: subDepartment, subid: number) => (
+            item.sub_departments.map((sub: subDepartment,) => (
               <FormControlLabel
                 // key={index}
                 style={{ marginLeft: "20px" }}
@@ -151,7 +151,7 @@ function Department() {
                 control={
                   <Checkbox
                     checked={!!sub.state}
-                    onChange={() => handleChildChange(sub.id, index)}
+                    onChange={() => handleChildChange(sub.id,)}
                   />
                 }
               />
